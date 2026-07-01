@@ -13,12 +13,12 @@ with **no code change required**.
 
 ## 👋 Pick your track
 
-> **Not a developer? Start here.** This guide has two paths. Most jabronis only
-> need the first one.
+> **Not a developer? Start here.** This guide has two paths. Most jabronis (like
+> the author) only need the first one.
 
 | If you are… | Go to | What you'll get |
 |-------------|-------|-----------------|
-| 🎤 **A jabroni** — you want to run it, demo it, swap products, and "vibe code" small changes by asking Claude | 👉 **[Track 1: Run & Demo](#track-1--run--demo-the-jabroni-track)** *(start here)* | Get it running, switch products live, talk about the tech, make changes by chatting |
+| 🎤 **A jabroni** — you want to run it, demo it, swap products, and ask Claude to make small changes for you | 👉 **[Track 1: Run & Demo](#track-1--run--demo-the-jabroni-track)** *(start here)* | Get it running, switch products live, talk about the tech, make changes by chatting |
 | 🛠️ **A developer** — you want to build a real screen on the SDK and understand the data model | **[Track 2: Build on the SDK](#track-2--build-on-the-sdk-the-developer-track)** | The `logik-client` SDK, the normalized model, the render contract, gotchas |
 
 ---
@@ -36,7 +36,7 @@ the story you want.
 
 You do **not** need to know React, JavaScript, or the Logik API to run this and
 demo it. If you want to *change* something, you can describe it to Claude Code and
-let it do the editing — see [Vibe coding](#vibe-coding-changing-things-by-asking).
+let it do the editing — see [Making changes by asking Claude](#making-changes-by-asking-claude).
 
 ## Step 0 — Get set up first (one-time, ~10 min)
 
@@ -45,10 +45,16 @@ let it do the editing — see [Vibe coding](#vibe-coding-changing-things-by-aski
 > installed. If you're starting from zero — no project folder, `npm: command not
 > found`, "what folder?" — do this first. **This is the step that unsticks you.**
 
-You need three things on your machine, once:
+You need four things on your machine, once:
 
-**1. A terminal.** On a Mac, press **⌘ + Space**, type `Terminal`, hit Enter. That
-black-and-white window is where every command in this guide gets typed.
+**1. A terminal.** On a Mac, press **⌘ + Space**, type `Terminal`, hit Enter. On
+Windows, press the **Windows key**, type `cmd` (or `PowerShell`), hit Enter — either
+works the same way for this guide. That's the window where every command here gets
+typed.
+
+> 🪟 **On Windows:** paths in this guide use `~/Documents/...` (Mac/Linux style).
+> In Command Prompt, use `%USERPROFILE%\Documents\...` instead, or install
+> [Git Bash](https://git-scm.com/downloads) to run the commands exactly as written.
 
 **2. Node.js (this is what gives you `npm`).** Go to
 [nodejs.org](https://nodejs.org), download the **LTS** version, run the installer,
@@ -70,14 +76,14 @@ usual reason a jabroni is stuck.* Pick whichever is easiest:
   through the rest.
 - **Git clone (copy-paste).** In the terminal:
   ```bash
-  mkdir -p ~/Documents/Python
-  git clone https://github.com/RavioliStorm/logik-custom-ui.git ~/Documents/Python/logik-ui
-  cd ~/Documents/Python/logik-ui
+  mkdir -p ~/Documents/Projects
+  git clone https://github.com/RavioliStorm/logik-custom-ui.git ~/Documents/Projects/logik-ui
+  cd ~/Documents/Projects/logik-ui
   ```
   *(`git: command not found`? Run `xcode-select --install` first, or just use the
   zip option below.)*
 - **A zip someone sent you.** Unzip it, drag the folder somewhere you'll remember
-  (e.g. `~/Documents/Python/logik-ui`), and note that path — you'll `cd` into it.
+  (e.g. `~/Documents/Projects/logik-ui`), and note that path — you'll `cd` into it.
 
 **4. Your two Logik secrets.** Ask your team for the **tenant URL** (`LOGIK_API_BASE`)
 and an **access token** (`LOGIK_AUTH_TOKEN`). You'll paste them into `.env` in the
@@ -107,7 +113,7 @@ in whatever folder your terminal is currently in. Run **both** of these lines, i
 order:
 
 ```bash
-cd ~/Documents/Python/logik-ui   # 1. move into the project folder (adjust if yours lives elsewhere)
+cd ~/Documents/Projects/logik-ui   # 1. move into the project folder (adjust if yours lives elsewhere)
 npm start                         # 2. start the app → http://localhost:3000
 ```
 
@@ -115,7 +121,7 @@ To stop the app, press **Ctrl+C** in the terminal.
 
 > ⚠️ **Seeing `npm error … Could not read package.json` / `ENOENT`?** You ran
 > `npm start` from the wrong folder (e.g. straight from your home directory). That's
-> harmless — just run the `cd ~/Documents/Python/logik-ui` line first, then
+> harmless — just run the `cd ~/Documents/Projects/logik-ui` line first, then
 > `npm start` again.
 
 > ⚠️ **`npm: command not found`?** Node.js isn't installed — go back to
@@ -185,7 +191,7 @@ When you're talking to a customer, here's the architecture in plain terms:
 
 That's enough to have a confident conversation. You don't need the internals.
 
-## Vibe coding: changing things by asking
+## Making changes by asking Claude
 
 Want the buttons blue, a field hidden, the cart moved, a different layout? You don't
 have to write code — **describe it to Claude Code** and let it make the edit. Good
@@ -244,8 +250,8 @@ You render; the SDK does the plumbing. That's the whole idea.
 If you haven't already, clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/RavioliStorm/logik-custom-ui.git ~/Documents/Python/logik-ui
-cd ~/Documents/Python/logik-ui
+git clone https://github.com/RavioliStorm/logik-custom-ui.git ~/Documents/Projects/logik-ui
+cd ~/Documents/Projects/logik-ui
 npm install
 ```
 
