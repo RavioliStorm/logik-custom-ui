@@ -1,0 +1,3 @@
+mkdir -p /Users/weston.lazenby/CascadeProjects/logik-ui
+cd /Users/weston.lazenby/CascadeProjects/logik-ui
+npx create-react-app .
